@@ -110,7 +110,7 @@ app.get('/person/full/:personId', (req, res) => {
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, '../sw-frontend/build', 'index.html'));
-  });
+});
 
 app.listen(port, () => {
 	console.log(`Star Wars API listening on port ${port}!`)
