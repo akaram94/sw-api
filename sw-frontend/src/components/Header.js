@@ -4,6 +4,7 @@ import AsyncSelect from "react-select/async";
 import { components } from "react-select";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { NODE_URL } from "../constants";
 import { debounce } from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -28,7 +29,7 @@ const DropdownIndicator = props => {
 let loadData = function(inputValue, callback) {
 	// Used for getting characters via name lookup.
 	if(isNaN(inputValue) && inputValue.length > 2) {
-		axios.get(`http:\/\/127.0.0.1:8000/person/name/${inputValue}/`).then(response => {
+		axios.get(`${NODE_URL}person/name/${inputValue}/`).then(response => {
 			let results = [];
 			let data = response.data;
 			for(let i = 0; i < data.length; i++) {
@@ -44,7 +45,7 @@ let loadData = function(inputValue, callback) {
 
 	// Used for getting a specific person via ID lookup.
 	else if(!isNaN(inputValue)){
-		axios.get(`http:\/\/127.0.0.1:8000/person/${inputValue}/`).then(response => {
+		axios.get(`${NODE_URL}person/${inputValue}/`).then(response => {
 			let results = [];
 			let data = response.data;
 			results.push({value: data.url, label: data.name});
@@ -71,7 +72,7 @@ let selectPerson = function(person) {
 
 	let personId = person.value.match(/\d+/)[0];
 
-	axios.get(`http:\/\/127.0.0.1:8000/person/full/${personId}/`).then(response => {
+	axios.get(`${NODE_URL}person/full/${personId}/`).then(response => {
 		let attributes = [];
 		let data = response.data;
 		console.log(data);

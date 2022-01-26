@@ -2,16 +2,20 @@
 const path = require('path');
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 
 // Attributes
 const port = process.env.PORT || 8000;
+const SWAPI_URL = "https://swapi.dev/api/";
+
+app.use(cors());
 
 app.use(express.static(path.resolve(__dirname, '../sw-frontend/build')));
 
 // Endpoints
 app.get('/person/name/:personName', (req, res) => {
-	const url = "https://swapi.dev/api/people/?format=json";
+	const url = `${SWAPI_URL}people/?format=json`;
 	// Lookup names
 	axios.get(url).then(function(response) {
 		let data = response.data;
@@ -33,7 +37,7 @@ app.get('/person/name/:personName', (req, res) => {
 
 app.get('/person/:personId', (req, res) => {
 	// Getting a person based on a unique ID
-	const url = `https:\/\/swapi.dev/api/people/${req.params.personId}/?format=json`;
+	const url = `${SWAPI_URL}people/${req.params.personId}/?format=json`;
 	axios.get(url).then(function(response) {
 		res.status(200).json(response.data);
 	})
@@ -44,7 +48,7 @@ app.get('/person/:personId', (req, res) => {
 
 app.get('/person/full/:personId', (req, res) => {
 	// Getting a person based on a unique ID
-	const url = `https:\/\/swapi.dev/api/people/${req.params.personId}/?format=json`;
+	const url = `${SWAPI_URL}people/${req.params.personId}/?format=json`;
 	axios.get(url).then(function(response) {
 
 		// Form URLs to make requests from.
