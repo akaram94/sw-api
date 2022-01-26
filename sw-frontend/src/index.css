@@ -1,0 +1,115 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border: 0;
+  overflow: hidden;
+  /*  Disable scrollbars */
+  display: block;
+  /* No floating content on sides */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #070707 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+header {
+  padding: 25px;
+  background-color: #000000;
+  border-bottom: 1px solid #FFE81F;
+}
+
+#personDataContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+#welcomeScreen {
+  color: #fff;
+  padding: 15px;
+}
+
+#welcomeScreen > h1 {
+  color: #43a5cf;
+}
+
+#personDataContainer > .card {
+  transform: rotate3d(1, 0, 0, 380deg) scale(2) rotateX(20deg);
+  transform-origin: 50% 0%;
+  background-color: rgba(0,0,0,0) !important;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  perspective: 400px;
+  border: 0 !important;
+}
+
+.card-body {
+  color: #43a5cf;
+  text-shadow: 1px 2px rgb(43, 43, 43);
+}
+
+.card .list-group {
+  text-align: left;
+}
+
+.card .list-group-item {
+  background-color: rgba(0,0,0,0);
+  color: #FFE81F;
+  text-shadow: 1px 2px rgb(43, 43, 43);
+  border: 0;
+}
+
+#searchBar div[class$="Input"] {
+  color: #eee;
+}
+
+#searchBar div[class$="singleValue"] {
+  color: #eee;
+}
+
+#headerText {
+  color: #FFE81F;
+  text-shadow: 0px 0px 12px #FFE81F;
+}
+
+
+div[id$="listbox"] > div > div {
+  background-color:rgb(43, 43, 43);
+  color: #eee;
+}
+
+div[id$="listbox"] > div > div:hover, 
+div[id$="listbox"] > div > div:active,
+div[id$="listbox"] > div > div:focus {
+  background-color: #111;
+}
+
+#searchBar > div > div {
+  background-color: rgb(43, 43, 43);
+  border-color: rgb(43, 43, 43);
+}
+
+#stars {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
