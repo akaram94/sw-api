@@ -46,14 +46,12 @@ class Card extends Component {
 			if(custom.species) {
 				custom.species.forEach(element => {
 					species.push(element.name, `Average Lifespan: ${element.average_lifespan} years`, `Classification: ${element.classification}`, `Language: ${element.language}`);
-					console.log(species);
 				});
 			}
 
 			if(custom.films) {
 				custom.films.forEach(element => {
 					films.push(element.title, `Director: ${element.director}`, `Producer(s): ${element.producer}`, `Release Date: ${element.release_date}`);
-					console.log(films);
 				});
 			}
 		}

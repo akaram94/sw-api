@@ -27,7 +27,6 @@ app.get('/person/name/:personName', (req, res) => {
 				results.push({name: name, url: element.url});
 			}
 		});
-		console.log(results);
 		res.status(200).json(results);
 	})
 	.catch(function(error) {
@@ -99,8 +98,6 @@ app.get('/person/full/:personId', (req, res) => {
 
 			let finishedData = response.data;
 			finishedData["custom"] = custom;
-
-			console.log(finishedData);
 
 			res.status(200).json(finishedData);
 		})
