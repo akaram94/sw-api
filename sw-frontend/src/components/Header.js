@@ -9,6 +9,7 @@ import { debounce } from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { Spinner } from 'react-bootstrap';
 
 // Replacing caret with search icon in React Select.
 library.add(faSearch);
@@ -70,12 +71,19 @@ let selectPerson = function(person) {
         document.getElementById('welcomeScreen').remove();
     }
 
+	
+	ReactDOM.render(
+		<div className="loadingScreen">
+			<Spinner animation="border" role="status">
+				<span className="visually-hidden">Loading...</span>
+  			</Spinner>
+		</div>, document.getElementById('personDataContainer'));
+
 	let personId = person.value.match(/\d+/)[0];
 
 	axios.get(`${NODE_URL}person/full/${personId}/`).then(response => {
 		let attributes = [];
 		let data = response.data;
-		console.log(data);
 
 		attributes.push({
 			name: data.name,

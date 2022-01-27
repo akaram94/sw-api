@@ -128,6 +128,12 @@ div[id$="listbox"] > div > div:focus {
   background-color: #111;
 }
 
+.loadingScreen .spinner-border {
+  width: 8rem;
+  height: 8rem;
+  padding: 50px;
+}
+
 #searchBar > div > div {
   background-color: rgb(43, 43, 43);
   border-color: rgb(43, 43, 43);
