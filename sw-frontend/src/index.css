@@ -60,6 +60,7 @@ header {
   padding: 50px;
   overflow-y: scroll;
   border-radius: 5px;
+  padding-top: 25px;
 }
 
 .card-body {
