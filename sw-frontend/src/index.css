@@ -104,6 +104,7 @@ header {
 .card .films .list-group-item:first-child,
 .card .films .list-group-item:nth-child(4n + 5) {
   color: #eee;
+  font-weight: 500;
 }
 
 #searchBar input, #searchBar div[class$="singleValue"] {

@@ -61,25 +61,25 @@ class Card extends Component {
 		return(
 			<div className="card">
 				<div className="card-body">
-					<h5 className="card-title">{name}</h5>
+					<h1 className="card-title">{name}</h1>
 				</div>
 				<ul className="list-group list-group-flush attributes">
 					{attributes.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}
 				</ul>
 				<div className="card-body">
-					<h5 className="card-title">{homeworld.length > 0 ? "Home Planet Details" : ""}</h5>
+					<h3 className="card-title">{homeworld.length > 0 ? "Home Planet Details" : ""}</h3>
 				</div>
 				<ul className="list-group list-group-flush homeworld">
 					{homeworld.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}
 				</ul>
 				<div className="card-body">
-					<h5 className="card-title">{species.length > 0 ? "Species" : ""}</h5>
+					<h3 className="card-title">{species.length > 0 ? "Species" : ""}</h3>
 				</div>
 				<ul className="list-group list-group-flush species">
 					{species.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}	
 				</ul>
 				<div className="card-body">
-					<h5 className="card-title">{films.length > 0 ? "Featured In" : ""}</h5>
+					<h3 className="card-title">{films.length > 0 ? "Featured In" : ""}</h3>
 				</div>
 				<ul className="list-group list-group-flush films">
 					{films.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}	
