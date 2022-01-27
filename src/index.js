@@ -15,7 +15,7 @@ app.use(express.static(path.resolve(__dirname, '../sw-frontend/build')));
 
 // Endpoints
 app.get('/person/name/:personName', (req, res) => {
-	const url = `${SWAPI_URL}people/?format=json`;
+	const url = `${SWAPI_URL}people/?search=${req.params.personName}&format=json`;
 	// Lookup names
 	axios.get(url).then(function(response) {
 		let data = response.data;

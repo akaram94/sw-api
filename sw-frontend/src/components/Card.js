@@ -19,7 +19,6 @@ class Card extends Component {
 	render() {
 		let data = this.state.person;
 		data = data[0];
-		// let homePlanetData = data.homePlanet[0];
 
 		let name = data.name;
 		let height = `Height: ${data.height}cm`;
@@ -28,19 +27,62 @@ class Card extends Component {
 		let skinColor = `Skin Color: ${data.skinColor}`;
 		let gender = `Gender: ${data.gender}`;
 		let birthYear = `Birth Year: ${data.birthYear}`;
-		// let homePlanet = `Home Planet: ${homePlanetData.name}`;
-		// let homeTerrain = `Home Terrain: ${homePlanetData.terrain}`;
-		// let homePopulation = `Home Population: ${homePlanetData.population}`;
 
 		let attributes = [height, mass, hairColor, skinColor, gender, birthYear];
+
+		// Custom attributes pulled from other endpoints
+		let homeworld = [];
+		let species = [];
+		let films = [];
+		if(data.custom) {
+			let custom = data.custom;
+			if(custom.homeworld) {
+				let homePlanet = `Home Planet: ${custom.homeworld.name}`;
+				let homeTerrain = `Terrain: ${custom.homeworld.terrain}`;
+				let homePopulation = `Population: ${custom.homeworld.population}`;
+				homeworld.push(homePlanet, homeTerrain, homePopulation);
+			}
+
+			if(custom.species) {
+				custom.species.forEach(element => {
+					species.push(element.name, `Average Lifespan: ${element.average_lifespan} years`, `Classification: ${element.classification}`, `Language: ${element.language}`);
+					console.log(species);
+				});
+			}
+
+			if(custom.films) {
+				custom.films.forEach(element => {
+					films.push(element.title, `Director: ${element.director}`, `Producer(s): ${element.producer}`, `Release Date: ${element.release_date}`);
+					console.log(films);
+				});
+			}
+		}
 
 		return(
 			<div className="card">
 				<div className="card-body">
 					<h5 className="card-title">{name}</h5>
 				</div>
-				<ul className="list-group list-group-flush">
+				<ul className="list-group list-group-flush attributes">
 					{attributes.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}
+				</ul>
+				<div className="card-body">
+					<h5 className="card-title">{homeworld.length > 0 ? "Home Planet Details" : ""}</h5>
+				</div>
+				<ul className="list-group list-group-flush homeworld">
+					{homeworld.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}
+				</ul>
+				<div className="card-body">
+					<h5 className="card-title">{species.length > 0 ? "Species" : ""}</h5>
+				</div>
+				<ul className="list-group list-group-flush species">
+					{species.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}	
+				</ul>
+				<div className="card-body">
+					<h5 className="card-title">{films.length > 0 ? "Featured In" : ""}</h5>
+				</div>
+				<ul className="list-group list-group-flush films">
+					{films.map((e, index) => (<li key={e + "-" + index} className="list-group-item">{e}</li>))}	
 				</ul>
 			</div>
 		);
